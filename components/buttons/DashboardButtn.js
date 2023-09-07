@@ -8,7 +8,7 @@ const router = useRouter()
   return (
     <div className='relative mt-8'>
       <button onClick={() => router.push('/members')} className='relative transition-all transform duration-500 hover:scale-105 bg-gradient-to-t from-blue-950 to-blue-400 hover:bg-blue-400 text-white px-6 py-3 rounded-full'>
-        Check your status
+        Explore
         <div className='absolute -top-3 right-2'>
           <span className='relative flex justify-center items-center h-6 w-6'>
             <span className='animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-500 opacity-75'></span>
