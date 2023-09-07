@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className='min-h-[calc(100vh-4rem)] flex justify-center px-4 pt-8 pb-12'>
+    <main className='min-h-[calc(100vh-4rem)] flex justify-center px-4 pt-12 pb-12'>
       <div className='space-y-4 flex flex-col items-center'>
         <div className='relative shadow-xl rounded-full flex items-center justify-center'>
           <div className='border  relative z-30 w-[270px] h-[270px] animate-spin-slow rounded-full overflow-hidden'>
