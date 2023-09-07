@@ -41,7 +41,7 @@ const MembersCard = ({ id, username, position, biz }) => {
         <motion.div className='max-w-[80%]'>
           <motion.h1
             variants={textAnimation}
-            className='text-xl truncate capitalize text-blue-900'>
+            className='font-medium text-xl truncate capitalize text-blue-900'>
             {username}
           </motion.h1>
           <motion.div variants={textAnimation}>

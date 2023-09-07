@@ -18,8 +18,8 @@ const LogoComponent = () => {
         </div>
       </Link>
       <Link href='/' className='leading-3 text-white'>
-        <p>PMCI</p>
-        <p className='text-sm font-light'>Unity, Peace And Love</p>
+        <p className="text-2xl">PMCI</p>
+        <p className='hidden sm:block text-sm font-light'>Unity, Peace And Love</p>
       </Link>
     </div>
   );

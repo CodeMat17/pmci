@@ -43,10 +43,10 @@ const AdminPage = async () => {
 
         <div className='py-8 '>
           <div className='border rounded-2xl shadow-md pl-4 flex items-center justify-between overflow-hidden'>
-            <div className='flex items-baseline'>
+            {/* <div className='flex items-baseline'>
               <p className='pr-2 text-blue-600 text-sm'>1</p>
               <p className='truncate'>Matthew Chukwu Anthony Chijioke</p>
-            </div>
+            </div> */}
 
             {/* <Link
               href={`/admin/${12}`}

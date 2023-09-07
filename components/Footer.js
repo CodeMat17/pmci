@@ -61,7 +61,7 @@ const Footer = () => {
         </p>
         <p className='text-center text-white mt-4 border-t border-dashed border-gray-600 pt-4'>
           {" "}
-          &copy; PMCI 2023.cAll rights reserved.
+          &copy; PMCI 2023. All rights reserved.
         </p>
       </div>
     </div>
