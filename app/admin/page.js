@@ -5,7 +5,9 @@ import SignOut from "@/components/buttons/SignOut";
 import AddMember from "@/components/crud/AddMember";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-// import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+
+
+export const dynamic = "force-dynamic";// import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 // import Link from "next/link";
 // import { useCallback, useEffect, useState } from "react";
 
