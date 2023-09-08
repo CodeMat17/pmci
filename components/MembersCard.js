@@ -45,23 +45,28 @@ const MembersCard = ({ id, username, position, biz, biz2 }) => {
             className='font-medium text-xl truncate capitalize text-blue-900'>
             {username}
           </motion.h1>
-          <motion.div variants={textAnimation} className="w-full">
+          <motion.div variants={textAnimation} className='w-full'>
             <h2 className='font-ligh text-blue-900 text-lg font-medium'>
               {position}
             </h2>
-            <h3
-              variants={textAnimation}
-              className='w-full leading-4 inline-flex place-items-start text-sm font-light'>
-              <BsFillStarFill size={10} className='text-yellow-600' />
-              {biz}
-            </h3>
-            {biz2 && (
-              <h3
-                variants={textAnimation}
-                className='w-full leading-4 inline-flex place-items-start text-sm font-light'>
+
+            <motion.div variants={textAnimation} className='flex space-x-1'>
+              <div>
                 <BsFillStarFill size={10} className='text-yellow-600' />
-                {biz2}
+              </div>
+              <h3 className='w-full leading-4 inline-flex place-items-start text-sm font-light'>
+                {biz}
               </h3>
+            </motion.div>
+            {biz2 && (
+              <motion.div variants={textAnimation} className='flex space-x-1'>
+                <div>
+                  <BsFillStarFill size={10} className='text-yellow-600' />
+                </div>
+                <h3 className='w-full leading-4 inline-flex place-items-start text-sm font-light'>
+                  {biz2}
+                </h3>
+              </motion.div>
             )}
           </motion.div>
         </motion.div>
