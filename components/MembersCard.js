@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { BsFillStarFill } from "react-icons/bs";
 import { IoMdContact } from "react-icons/io";
 
 const animateAvatar = {
@@ -45,13 +46,23 @@ const MembersCard = ({ id, username, position, biz, biz2 }) => {
             {username}
           </motion.h1>
           <motion.div variants={textAnimation}>
-            <h2 className='font-ligh text-blue-900 text-lg font-medium'>{position}</h2>
-            <h3 variants={textAnimation} className='text-sm font-light'>
+            <h2 className='font-ligh text-blue-900 text-lg font-medium'>
+              {position}
+            </h2>
+            <h3
+              variants={textAnimation}
+              className='inline-flex place-items-start text-sm font-light'>
+              <BsFillStarFill size={10} className='text-yellow-600' />
               {biz}
             </h3>
-            <h3 variants={textAnimation} className='text-sm font-light'>
-              {biz2}
-            </h3>
+            {biz2 && (
+              <h3
+                variants={textAnimation}
+                className='inline-flex place-items-start text-sm font-light'>
+                <BsFillStarFill size={10} className='text-yellow-600' />
+                {biz2}
+              </h3>
+            )}
           </motion.div>
         </motion.div>
       </div>
