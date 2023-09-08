@@ -7,7 +7,7 @@ export const revalidate = 0;
 const MembersList = async () => {
   const { data: profiles } = await supabase
     .from("profiles")
-    .select(`id, username, position, biz`)
+    .select(`id, username, position, biz, biz2`)
     .order("username", { ascending: true });
 
   return (

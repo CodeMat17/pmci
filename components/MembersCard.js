@@ -23,7 +23,7 @@ const textAnimation = {
   },
 };
 
-const MembersCard = ({ id, username, position, biz }) => {
+const MembersCard = ({ id, username, position, biz, biz2 }) => {
   const router = useRouter();
 
   return (
@@ -45,10 +45,13 @@ const MembersCard = ({ id, username, position, biz }) => {
             {username}
           </motion.h1>
           <motion.div variants={textAnimation}>
-            <p className='font-ligh text-blue-950'>{position}</p>
-            <p variants={textAnimation} className='text-sm font-light'>
+            <h2 className='font-ligh text-blue-900 text-lg font-medium'>{position}</h2>
+            <h3 variants={textAnimation} className='text-sm font-light'>
               {biz}
-            </p>
+            </h3>
+            <h3 variants={textAnimation} className='text-sm font-light'>
+              {biz2}
+            </h3>
           </motion.div>
         </motion.div>
       </div>
