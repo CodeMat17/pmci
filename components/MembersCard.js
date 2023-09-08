@@ -50,16 +50,16 @@ const MembersCard = ({ id, username, position, biz, biz2 }) => {
               {position}
             </h2>
 
-            <motion.div variants={textAnimation} className='flex space-x-1'>
+            <motion.div variants={textAnimation} className='flex space-x-1 w-full '>
               <div>
                 <BsFillStarFill size={10} className='text-yellow-600' />
               </div>
               <h3 className='w-full leading-4 inline-flex place-items-start text-sm font-light'>
-                {biz}
+                {biz} 
               </h3>
             </motion.div>
             {biz2 && (
-              <motion.div variants={textAnimation} className='flex space-x-1'>
+              <motion.div variants={textAnimation} className='flex space-x-1 w-full '>
                 <div>
                   <BsFillStarFill size={10} className='text-yellow-600' />
                 </div>
