@@ -42,12 +42,13 @@ const DeleteProfile = ({ id, name, positn, bis, bis2 }) => {
         setErrorMsg(error.message);
       }
       if (!error) {
-        toast.success("Profile data updated successfully!", {
+        toast.success("Profile data deleted successfully!", {
           duration: 5000,
           position: "top-center",
         });
           setIsOpen(false);
-        router.push('/admin');
+          router.push('/admin');
+          router.refresh()
       }
     } catch (error) {
       console.log("Error Msg: ", error);

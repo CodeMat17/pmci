@@ -46,8 +46,9 @@ const DeleteWeddingLevy = ({ name, amnt, user_id, benefy }) => {
           duration: 5000,
           position: "top-center",
         });
+        router.push("/admin");
+        router.refresh();
 
-           router.push("/admin");
         setIsOpen(false);
       }
     } catch (error) {

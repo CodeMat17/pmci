@@ -33,10 +33,7 @@ const DeleteOtherLevy = ({ user_id, descp, titlee, amnt, name }) => {
     setLoading(true);
     setErrorMsg(null);
     try {
-      const { error } = await supabase
-        .from("others")
-        .delete()
-        .eq("id", id);
+      const { error } = await supabase.from("others").delete().eq("id", id);
 
       if (error) {
         setErrorMsg(error.message);
@@ -47,7 +44,8 @@ const DeleteOtherLevy = ({ user_id, descp, titlee, amnt, name }) => {
           position: "top-center",
         });
 
-          router.push("/admin");
+        router.push("/admin");
+        router.refresh();
         setIsOpen(false);
       }
     } catch (error) {
@@ -61,7 +59,9 @@ const DeleteOtherLevy = ({ user_id, descp, titlee, amnt, name }) => {
     <>
       <Toaster />
       <div>
-        <button onClick={openModal} className='text-2xl text-red-600 p-2 rounded-full bg-purple-100 shadow-md'>
+        <button
+          onClick={openModal}
+          className='text-2xl text-red-600 p-2 rounded-full bg-purple-100 shadow-md'>
           <AiOutlineClose className='' />
         </button>
       </div>
