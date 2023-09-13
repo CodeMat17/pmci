@@ -36,7 +36,7 @@ const Footer = () => {
 
             <div>
               <Link href='/executives' className=' hover:text-gray-300'>
-                Executies
+                Executives
               </Link>
             </div>
 

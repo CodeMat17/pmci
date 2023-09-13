@@ -15,6 +15,8 @@ const OtherLevies = ({ others }) => {
 
       <div className='w-full pt-6 max-w-md mx-auto rounded-2xl'>
         <div className='space-y-10'>
+{/* {others.length < 1 ? } */}
+
           {others &&
             others.map((other) => (
               <div
