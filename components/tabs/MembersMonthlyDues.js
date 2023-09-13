@@ -16,7 +16,7 @@ const MembersMonthlyDues = ({ profiles }) => {
             <Link href={`admin/${profile.id}`}
               key={profile.id}
               className='w-full flex justify-between items-center border p-4 rounded-full shadow-lg transition duration-500 hover:scale-110 bg-purple-100 hover:bg-purple-200 group'>
-              <h1 className='text-lg text-purple-700 truncate group-hover:text-purple-900'>{profile.username}</h1>
+              <h1 className='capitalize text-lg text-purple-700 truncate group-hover:text-purple-900'>{profile.username}</h1>
               <div>
                 <AiFillForward className="text-2xl text-purple-500 group-hover:text-green-600" />
               </div>

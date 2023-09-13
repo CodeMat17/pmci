@@ -121,7 +121,7 @@ const router = useRouter()
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
                       placeholder="Enter payer's name"
-                      className='border w-full p-3 rounded-xl'
+                      className='capitalize border w-full p-3 rounded-xl'
                     />
                     <input
                       value={beneficiary}

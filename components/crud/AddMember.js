@@ -123,7 +123,7 @@ const router = useRouter()
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
                       placeholder="Enter member's name here"
-                      className='border w-full p-3 rounded-xl'
+                      className='capitalize border w-full p-3 rounded-xl'
                     />
                     <input
                       value={position}

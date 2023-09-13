@@ -33,7 +33,8 @@ const AdminPage = async () => {
   const { data: profiles } = await supabase
     .from("profiles")
     .select("id, username")
-    .order("username", { ascending: true });
+    .order("username", { ascending: true })
+  .order('created_at', {ascending: true})
 
   const { data: weddings } = await supabase
     .from("weddinglevies")
