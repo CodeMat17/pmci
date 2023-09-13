@@ -1,6 +1,8 @@
 import OtherLeviesCard from "@/components/OtherLeviesCard";
 import PageTitle from "@/components/PageTitle";
 import supabase from "@/utils/supabase";
+import { Suspense } from "react";
+import LoadingUI from "../loading";
 
 export const revalidate = 0;
 const OtherLevies = async () => {
@@ -20,9 +22,11 @@ const OtherLevies = async () => {
         {others.length === 0 ? (
           <p className='text-center'>No collection recorded yet</p>
         ) : (
-          <div className="space-y-8">
+          <div className='space-y-8'>
             {others.map((other) => (
-              <OtherLeviesCard key={other.id} {...other} />
+              <Suspense key={other.id} fallback={<LoadingUI />}>
+                <OtherLeviesCard {...other} />
+              </Suspense>
             ))}
           </div>
         )}

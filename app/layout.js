@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
     <html lang='en'>
       <body className={inter.className}>
         <NavHeader />
-        <main>{children}</main>
+        <main className="bg-purple-50">{children}</main>
         <Footer />
       </body>
     </html>

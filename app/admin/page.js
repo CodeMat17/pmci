@@ -3,11 +3,13 @@
 import PageTitle from "@/components/PageTitle";
 import SignOut from "@/components/buttons/SignOut";
 import AddMember from "@/components/crud/AddMember";
+import AddOtherLevy from "@/components/crud/AddOtherLevy";
+import AddWeddingLevy from "@/components/crud/AddWeddingLevy";
+import Tabs from "@/components/tabs/Tabs";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
-
-export const dynamic = "force-dynamic";// import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+export const dynamic = "force-dynamic"; // import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 // import Link from "next/link";
 // import { useCallback, useEffect, useState } from "react";
 
@@ -28,32 +30,40 @@ const AdminPage = async () => {
     );
   }
 
+  const { data: profiles } = await supabase
+    .from("profiles")
+    .select("id, username")
+    .order("username", { ascending: true });
+
+  const { data: weddings } = await supabase
+    .from("weddinglevies")
+    .select("id, username, created_at, beneficiary, amount")
+    .order("beneficiary", { ascending: true });
+
+  const { data: others } = await supabase
+    .from("others")
+    .select("*")
+    .order("title", { ascending: true });
+
   return (
     <div className='min-h-[90vh] px-4 py-16'>
-      <div className='relative max-w-md mx-auto'>
-        {/* <pre>{JSON.stringify(user_id, null, 2)}</pre> */}
+      <div className='relative max-w-2xl mx-auto'>
+        {/* <pre>{JSON.stringify(others, null, 2)}</pre> */}
 
         <PageTitle title='Admin Dashboard' />
 
-        <AddMember />
+        <div className='pb-6 pt-10 grid grid-cols-1 sm:grid-cols-3 gap-3'>
+          <AddMember />
+          <AddWeddingLevy />
+          <AddOtherLevy />
+        </div>
 
-        <p className='mt-2 text-2xl font-normal text-center'>
+        <p className='mt-2 text-2xl font-normal text-center text-purple-900'>
           Manage Members Contributions
         </p>
 
         <div className='py-8 '>
-          <div className='border rounded-2xl shadow-md pl-4 flex items-center justify-between overflow-hidden'>
-            {/* <div className='flex items-baseline'>
-              <p className='pr-2 text-blue-600 text-sm'>1</p>
-              <p className='truncate'>Matthew Chukwu Anthony Chijioke</p>
-            </div> */}
-
-            {/* <Link
-              href={`/admin/${12}`}
-              className='border border-blue-900 p-5 bg-blue-900 text-white'>
-              Update
-            </Link> */}
-          </div>
+          <Tabs profiles={profiles} weddings={weddings} others={others} />
         </div>
 
         <div className='absolute -top-12 right-0'>

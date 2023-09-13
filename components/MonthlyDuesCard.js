@@ -5,9 +5,9 @@ const MonthlyDuesCard = ({ year, dues }) => {
   return (
     <div className='flex flex-col items-center justify-center'>
       <div className='flex items-center justify-center space-x-2'>
-        <p className='text-lg'>{year}</p>
+        <p className='text-lg text-purple-950'>{year}</p>
         {dues === 12 && (
-          <IoIosCheckmarkCircle className=' text-xl text-blue-900' />
+          <IoIosCheckmarkCircle className=' text-xl text-green-600' />
         )}
         {dues > 0 && dues <= 11 && (
           <AiOutlineLoading className=' text-lg text-yellow-600 animate-spin' />
@@ -32,7 +32,7 @@ const MonthlyDuesCard = ({ year, dues }) => {
 
       {dues === 12 && (
         <div
-          className={`flex items-center justify-center space-x-2 bg-blue-900 text-white px-3 py-1 rounded-full`}>
+          className={`flex items-center justify-center space-x-2 bg-green-600 text-white px-3 py-1 rounded-full`}>
           <p className=''>{dues}</p>
           <p className='leading-3'>months</p>
         </div>

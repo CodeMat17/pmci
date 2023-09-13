@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { BsFillStarFill } from "react-icons/bs";
+import { MdWorkspacePremium } from "react-icons/md";
 import { IoMdContact } from "react-icons/io";
 
 const animateAvatar = {
@@ -34,36 +34,42 @@ const MembersCard = ({ id, username, position, biz, biz2 }) => {
       viewport={{ once: false, amount: 0.8 }}
       transition={{ staggerChildren: 0.5 }}
       onClick={() => router.push(`/members/${id}`)}
-      className='cursor-pointer bg-gray-100 transform transition duration-500 hover:scale-110 hover:bg-gray-100 shadow-md rounded-lg py-4 px-2'>
+      className='cursor-pointer bg-purple-100 transform transition duration-500 hover:scale-110 hover:bg-gray-100 shadow-md rounded-lg py-4 px-2'>
       <div className=' flex items-center space-x-2'>
         <motion.div variants={animateAvatar} className='max-w-[20%'>
-          <IoMdContact size={60} className='text-blue-950' />
+          <IoMdContact size={60} className='text-purple-950' />
         </motion.div>
         <motion.div className='max-w-[80%]'>
           <motion.h1
             variants={textAnimation}
-            className='font-medium text-xl truncate capitalize text-blue-900'>
+            className='font-medium text-xl truncate capitalize text-purple-900'>
             {username}
           </motion.h1>
           <motion.div variants={textAnimation} className='w-full'>
-            <h2 className='font-ligh text-blue-900 text-lg font-medium'>
+            <h2 className='font-ligh text-purple-800 text-lg font-medium'>
               {position}
             </h2>
 
-            <motion.div variants={textAnimation} className='flex space-x-1 w-full '>
-              <div>
-                <BsFillStarFill size={10} className='text-yellow-600' />
-              </div>
-              <h3 className='w-full leading-4 inline-flex place-items-start text-sm font-light'>
-                {biz} 
-              </h3>
-            </motion.div>
-            {biz2 && (
-              <motion.div variants={textAnimation} className='flex space-x-1 w-full '>
+            {biz !== "..." && (
+              <motion.div
+                variants={textAnimation}
+                className='flex space-x-1 w-full '>
                 <div>
-                  <BsFillStarFill size={10} className='text-yellow-600' />
+                  <MdWorkspacePremium className='text-yellow-600 text-sm' />
                 </div>
-                <h3 className='w-full leading-4 inline-flex place-items-start text-sm font-light'>
+                <h3 className='w-full leading-4 inline-flex place-items-start text-sm text-purple-600 font-light'>
+                  {biz}
+                </h3>
+              </motion.div>
+            )}
+            {biz2 !== "..." && (
+              <motion.div
+                variants={textAnimation}
+                className='flex space-x-1 w-full '>
+                <div>
+                  <MdWorkspacePremium className='text-yellow-600 text-sm' />
+                </div>
+                <h3 className='w-full leading-4 inline-flex place-items-start text-sm text-purple-600 font-light'>
                   {biz2}
                 </h3>
               </motion.div>

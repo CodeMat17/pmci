@@ -15,7 +15,7 @@ const DesktopMenu = () => {
       {links.map((link) => (
         <div
           key={link.id}
-          className='transition-colors duration-700 text-sm tracking-wider text-gray-400 font-medium hover:bg-gray-600 hover:text-white px-4 py-2 rounded-xl whitespace-nowrap'>
+          className='transition-colors duration-700 text-sm tracking-wider text-white font-medium hover:bg-purple-800 hover:text-white px-4 py-2 rounded-xl whitespace-nowrap'>
           <Link href={link.href}>{link.label}</Link>
         </div>
       ))}

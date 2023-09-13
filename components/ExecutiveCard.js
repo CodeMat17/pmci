@@ -4,7 +4,7 @@ import React from 'react'
 const ExecutiveCard = ({name, position, img}) => {
   return (
     <div className='border shadow-md rounded-xl overflow-hidden'>
-      <div className='bg-blue-900 text-white tracking-widest p-4'>
+      <div className='bg-purple-200 text-purple-900 tracking-widest p-4'>
         <h1 className='text-2xl text-center truncate'>
         {name}
         </h1>
@@ -26,7 +26,7 @@ const ExecutiveCard = ({name, position, img}) => {
           </div>
         </div>
 
-        <h2 className=' text-blue-900 text-2xl text-center'>{position}</h2>
+        <h2 className=' text-purple-900 text-2xl text-center'>{position}</h2>
       </div>
     </div>
   );

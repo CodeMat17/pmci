@@ -4,7 +4,7 @@ import VerificationModal from "./VerificationModal";
 
 const Footer = () => {
   return (
-    <div className='bg-blue-950 px-4 py-8'>
+    <div className='bg-purple-950 px-4 py-8'>
       <div className='max-w-5xl mx-auto'>
         <LogoComponent />
         <div className='pt-6 sm:pl-16'>

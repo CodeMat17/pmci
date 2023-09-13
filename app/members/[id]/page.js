@@ -1,7 +1,6 @@
 import supabase from "@/utils/supabase";
 
 import MonthlyDuesCard from "@/components/MonthlyDuesCard";
-import OtherLevies from "@/components/OtherLevies";
 import PageTitle from "@/components/PageTitle";
 import { notFound } from "next/navigation";
 import { IoMdContact } from "react-icons/io";
@@ -30,12 +29,12 @@ const MemberStatus = async ({ params: { id } }) => {
 
       <div className='pt-6 space-y-6 divide-y divide-dashed divide-gray-300'>
         <div>
-          <IoMdContact size={60} className='text-blue-900' />
-          <h1 className='text-xl uppercase truncate'>{profile.username}</h1>
-          <p className='capitalize text-lg'>{profile.position}</p>
+          <IoMdContact size={60} className='text-purple-950' />
+          <h1 className='text-xl uppercase truncate text-purple-800'>{profile.username}</h1>
+          <p className='capitalize text-lg text-purple-800/70'>{profile.position}</p>
         </div>
         <div className='pt-6'>
-          <h2 className='text-center text-xl text-blue-950'>Monthly Dues</h2>         
+          <h2 className='text-center text-2xl text-purple-950'>Monthly Dues</h2>         
 
           <div className='grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 gap-8 py-6'>
             <MonthlyDuesCard year='2020' dues={profile.monthlydues.dues_2020} />

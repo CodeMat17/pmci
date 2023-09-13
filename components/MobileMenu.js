@@ -49,13 +49,13 @@ const MobileMenu = () => {
               <Menu.Items
                 as='section'
                 static
-                className='origin-top-right absolute right-0 transition-all duration-500 flex flex-col mt-2 rounded-lg w-72 overflow-hidden shadow-2xl ring-1 ring-black ring-opacity-5 focus:ontline-none bg-slate-600'>
+                className='origin-top-right absolute right-0 transition-all duration-500 flex flex-col mt-2 rounded-lg w-72 overflow-hidden shadow-2xl ring-1 ring-black ring-opacity-5 focus:ontline-none bg-slate-500'>
                 {links.map((link) => (
                   <Menu.Item
                     as='a'
                     key={link.href}
                     href={link.href}
-                    className='px-4 py-3 text-2xl font-medium tracking-wider transition duration-500 hover:bg-cyan-300 hover:text-blue-900'>
+                    className='px-4 py-3 text-2xl font-medium tracking-wider transition duration-500 hover:bg-purple-300 hover:text-purple-900'>
                     {link.label}
                   </Menu.Item>
                 ))}

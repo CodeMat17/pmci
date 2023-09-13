@@ -24,7 +24,7 @@ const singleWord = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 1,
+      duration: 0.2,
     },
   },
 };
@@ -35,7 +35,7 @@ const PageTitle = ({ title }) => {
       variants={quote}
       initial='initial'
       whileInView='animate'
-      className='text-4xl text-center text-blue-950 font-light uppercase'>
+      className='text-4xl text-center text-purple-950 font-medium uppercase'>
       {title.split(" ").map((word, index) => (
         <motion.span
           key={index}

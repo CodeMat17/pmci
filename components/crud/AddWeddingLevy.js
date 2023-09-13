@@ -4,10 +4,11 @@ import { Dialog, Transition } from "@headlessui/react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Fragment, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
-const AddMember = () => {
+const AddWeddingLevy = () => {
   const supabase = createClientComponentClient();
-
+const router = useRouter()
   const [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => {
@@ -19,41 +20,40 @@ const AddMember = () => {
   };
 
   const [username, setUsername] = useState("");
-  const [position, setPosition] = useState("");
-  const [biz, setBiz] = useState("");
-  const [biz2, setBiz2] = useState("");
+  const [beneficiary, setBeneficiary] = useState("");
+  const [amount, setAmount] = useState("");
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
 
-  const addMember = async () => {
+  const addWeddingLevy = async () => {
     setErrorMsg(null);
     setLoading(true);
 
-    if (!username || !position) {
-      setErrorMsg("Name and position fields are required.");
+    if (!username || !beneficiary || !amount) {
+      setErrorMsg("All fields are required.");
       setLoading(false);
     } else if (username.length < 4) {
       setErrorMsg("Name cannot be less than 4 characters");
       setLoading(false);
-    } else if (username.length > 3 || position) {
+    } else if (username.length > 3 || beneficiary || amount) {
       try {
         const { data, error } = await supabase
-          .from("profiles")
-          .insert([{ username, position, biz, biz2 }])
+          .from("weddinglevies")
+          .insert([{ username, beneficiary, amount }])
           .select();
 
         if (data) {
-          toast.success(`${username} added successfully`, {
+          toast.success(`Levy added successfully`, {
             duration: 5000,
             position: "top-center",
             // Styling
             style: {},
             className: "",
           });
+          router.refresh()
           setUsername("");
-          setPosition("");
-          setBiz("");
-          setBiz2("");
+          setBeneficiary("");
+          setAmount("");
           setIsOpen(false);
         }
         if (error) {
@@ -73,11 +73,11 @@ const AddMember = () => {
   return (
     <>
       <Toaster />
-      <div className='w-full flex justify-center'>
+      <div className='flex justify-center w-full'>
         <button
           onClick={openModal}
           className='w-full font-medium text-purple-900 transition-colors duration-500 bg-purple-200 hover:bg-purple-300 px-5 py-3 rounded-full tracking-wider'>
-          ADD MEMBER
+          ADD WEDDING LEVY
         </button>
       </div>
 
@@ -108,7 +108,7 @@ const AddMember = () => {
                   <Dialog.Title
                     as='h3'
                     className='text-2xl text-center font-medium leading-6 text-gray-900'>
-                    Add A Member
+                    Add WEDDING LEVY
                   </Dialog.Title>
 
                   {errorMsg && (
@@ -120,25 +120,19 @@ const AddMember = () => {
                     <input
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
-                      placeholder="Enter member's name here"
+                      placeholder="Enter payer's name"
                       className='border w-full p-3 rounded-xl'
                     />
                     <input
-                      value={position}
-                      onChange={(e) => setPosition(e.target.value)}
-                      placeholder="Enter member's position here"
+                      value={beneficiary}
+                      onChange={(e) => setBeneficiary(e.target.value)}
+                      placeholder="Enter beneficiary's name"
                       className='border w-full p-3 rounded-xl'
                     />
                     <input
-                      value={biz}
-                      onChange={(e) => setBiz(e.target.value)}
-                      placeholder="Enter member's biz title here"
-                      className='border w-full p-3 rounded-xl'
-                    />
-                    <input
-                      value={biz2}
-                      onChange={(e) => setBiz2(e.target.value)}
-                      placeholder="Enter member's 2nd biz title if any"
+                      value={amount}
+                      onChange={(e) => setAmount(e.target.value)}
+                      placeholder="Enter amount"
                       className='border w-full p-3 rounded-xl'
                     />
                   </div>
@@ -154,7 +148,7 @@ const AddMember = () => {
                     <button
                       type='button'
                       className='inline-flex justify-center rounded-xl border border-transparent bg-blue-100 px-5 py-3 tracking-wider font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
-                      onClick={addMember}>
+                      onClick={addWeddingLevy}>
                       {loading ? "Adding..." : "Add"}
                     </button>
                   </div>
@@ -168,4 +162,4 @@ const AddMember = () => {
   );
 };
 
-export default AddMember;
+export default AddWeddingLevy;

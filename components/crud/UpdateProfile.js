@@ -2,13 +2,17 @@
 
 import { Dialog, Transition } from "@headlessui/react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useRouter } from "next/navigation";
 import { Fragment, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { BiMessageSquareEdit } from "react-icons/bi";
 
-const AddMember = () => {
+export const revalidate = 0;
+
+const UpdateProfile = ({ id, name, positn, bis, bis2 }) => {
   const supabase = createClientComponentClient();
-
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
 
   const closeModal = () => {
     setIsOpen(false);
@@ -18,66 +22,51 @@ const AddMember = () => {
     setIsOpen(true);
   };
 
-  const [username, setUsername] = useState("");
-  const [position, setPosition] = useState("");
-  const [biz, setBiz] = useState("");
-  const [biz2, setBiz2] = useState("");
+  const [username, setUsername] = useState(name);
+  const [position, setPosition] = useState(positn);
+  const [biz, setBiz] = useState(bis);
+  const [biz2, setBiz2] = useState(bis2);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
 
-  const addMember = async () => {
+  const updateProfile = async () => {
     setErrorMsg(null);
     setLoading(true);
+    try {
+      const { error } = await supabase
+        .from("profiles")
+        .update({ username, position, biz, biz2 })
+        .eq("id", id)
+        .select();
 
-    if (!username || !position) {
-      setErrorMsg("Name and position fields are required.");
-      setLoading(false);
-    } else if (username.length < 4) {
-      setErrorMsg("Name cannot be less than 4 characters");
-      setLoading(false);
-    } else if (username.length > 3 || position) {
-      try {
-        const { data, error } = await supabase
-          .from("profiles")
-          .insert([{ username, position, biz, biz2 }])
-          .select();
-
-        if (data) {
-          toast.success(`${username} added successfully`, {
-            duration: 5000,
-            position: "top-center",
-            // Styling
-            style: {},
-            className: "",
-          });
-          setUsername("");
-          setPosition("");
-          setBiz("");
-          setBiz2("");
-          setIsOpen(false);
-        }
-        if (error) {
-          setErrorMsg(error.message);
-        }
-      } catch (error) {
-        console.log("Error Msg:", error);
-      } finally {
-        setLoading(false);
+      if (error) {
+        setErrorMsg(error.message);
       }
-    } else {
-      setErrorMsg("Something went wrong! Try again.");
+      if (!error) {
+        toast.success("Profile data updated successfully!", {
+          duration: 5000,
+          position: "top-center",
+        });
+        setIsOpen(false);
+        router.refresh();
+      }
+    } catch (error) {
+      console.log("Error Msg: ", error);
+    } finally {
       setLoading(false);
     }
   };
 
+  // useEffect(() => {})
+
   return (
     <>
       <Toaster />
-      <div className='w-full flex justify-center'>
+      <div className=' py-2'>
         <button
           onClick={openModal}
-          className='w-full font-medium text-purple-900 transition-colors duration-500 bg-purple-200 hover:bg-purple-300 px-5 py-3 rounded-full tracking-wider'>
-          ADD MEMBER
+          className='flex items-center  space-x-2 text-white transition-colors duration-500 bg-purple-900 hover:bg-purple-800 px-6 py-2 rounded-xl tracking-wider'>
+          Update Profile
         </button>
       </div>
 
@@ -108,7 +97,7 @@ const AddMember = () => {
                   <Dialog.Title
                     as='h3'
                     className='text-2xl text-center font-medium leading-6 text-gray-900'>
-                    Add A Member
+                    Update Profile Info
                   </Dialog.Title>
 
                   {errorMsg && (
@@ -116,31 +105,44 @@ const AddMember = () => {
                       {errorMsg}
                     </p>
                   )}
-                  <div className='mt-6 w-full space-y-4'>
-                    <input
-                      value={username}
-                      onChange={(e) => setUsername(e.target.value)}
-                      placeholder="Enter member's name here"
-                      className='border w-full p-3 rounded-xl'
-                    />
-                    <input
-                      value={position}
-                      onChange={(e) => setPosition(e.target.value)}
-                      placeholder="Enter member's position here"
-                      className='border w-full p-3 rounded-xl'
-                    />
-                    <input
-                      value={biz}
-                      onChange={(e) => setBiz(e.target.value)}
-                      placeholder="Enter member's biz title here"
-                      className='border w-full p-3 rounded-xl'
-                    />
-                    <input
-                      value={biz2}
-                      onChange={(e) => setBiz2(e.target.value)}
-                      placeholder="Enter member's 2nd biz title if any"
-                      className='border w-full p-3 rounded-xl'
-                    />
+                  <div className='mt-6 w-full space-y-2'>
+                    <div>
+                      <label className='text-sm'>Username</label>
+                      <input
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        placeholder="Enter member's name here"
+                        className='border text-gray-500 w-full px-3 py-2 rounded-xl'
+                      />
+                    </div>
+                    <div>
+                      <label className='text-sm'>Position</label>
+                      <input
+                        value={position}
+                        onChange={(e) => setPosition(e.target.value)}
+                        placeholder="Enter member's position here"
+                        className='border text-gray-500 w-full px-3 py-2 rounded-xl'
+                      />
+                    </div>
+
+                    <div>
+                      <label className='text-sm'>Biz title 1 </label>
+                      <input
+                        value={biz}
+                        onChange={(e) => setBiz(e.target.value)}
+                        placeholder="Enter member's biz title here"
+                        className='border text-gray-500 w-full px-3 py-2 rounded-xl'
+                      />
+                    </div>
+                    <div>
+                      <label className='text-sm'>Optional: Biz title 2</label>
+                      <input
+                        value={biz2}
+                        onChange={(e) => setBiz2(e.target.value)}
+                        placeholder="Enter member's 2nd biz title if any"
+                        className='border text-gray-500 w-full px-3 py-2 rounded-xl'
+                      />
+                    </div>
                   </div>
 
                   <div className='mt-6 flex items-center justify-between'>
@@ -154,8 +156,8 @@ const AddMember = () => {
                     <button
                       type='button'
                       className='inline-flex justify-center rounded-xl border border-transparent bg-blue-100 px-5 py-3 tracking-wider font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
-                      onClick={addMember}>
-                      {loading ? "Adding..." : "Add"}
+                      onClick={updateProfile}>
+                      {loading ? "Updating..." : "Update"}
                     </button>
                   </div>
                 </Dialog.Panel>
@@ -168,4 +170,4 @@ const AddMember = () => {
   );
 };
 
-export default AddMember;
+export default UpdateProfile;

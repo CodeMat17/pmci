@@ -11,7 +11,7 @@ export default function Home() {
           </div>
 
           <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
-            <div className='relative w-[190px] h-[190px] border rounded-full overflow-hidden p-2'>
+            <div className='relative w-[190px] h-[190px] border rounded-full overflow-hidden p-2 shadow-lg'>
               <Image alt='logo' fill priority src='/pmci_logo.png' />
             </div>
           </div>

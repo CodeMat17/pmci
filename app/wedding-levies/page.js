@@ -1,8 +1,8 @@
-import FormatedCurrency from "@/components/FormatedCurrency";
 import PageTitle from "@/components/PageTitle";
 import WeddingLevyCard from "@/components/WeddingLevyCard";
 import supabase from "@/utils/supabase";
-import dayjs from "dayjs";
+import { Suspense } from "react";
+import LoadingUI from "../loading";
 
 export const revalidate = 0;
 const WeddingLevies = async () => {
@@ -25,7 +25,9 @@ const WeddingLevies = async () => {
         ) : (
           <>
             {levies.map((levy) => (
-              <WeddingLevyCard  key={levy.id} {...levy} />
+              <Suspense fallback={<LoadingUI />} key={levy.id}>
+                <WeddingLevyCard {...levy} />
+              </Suspense>
             ))}
           </>
         )}

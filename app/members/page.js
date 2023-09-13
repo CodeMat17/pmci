@@ -1,7 +1,8 @@
-import supabase from "@/utils/supabase";
-
 import MembersCard from "@/components/MembersCard";
 import PageTitle from "@/components/PageTitle";
+import supabase from "@/utils/supabase";
+import { Suspense } from "react";
+import LoadingUI from "../loading";
 
 export const revalidate = 0;
 const MembersList = async () => {
@@ -18,7 +19,9 @@ const MembersList = async () => {
 
       <div className='pt-12 space-y-6'>
         {profiles.map((profile) => (
-          <MembersCard key={profile.id} {...profile} />
+          <Suspense fallback={<LoadingUI />} key={profile.id}>
+            <MembersCard {...profile} />
+          </Suspense>
         ))}
       </div>
     </div>
