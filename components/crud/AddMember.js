@@ -4,10 +4,11 @@ import { Dialog, Transition } from "@headlessui/react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Fragment, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const AddMember = () => {
   const supabase = createClientComponentClient();
-
+const router = useRouter()
   const [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => {
@@ -50,6 +51,7 @@ const AddMember = () => {
             style: {},
             className: "",
           });
+          router.refresh()
           setUsername("");
           setPosition("");
           setBiz("");
