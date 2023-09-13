@@ -133,7 +133,7 @@ const UpdateMonthlyDues = ({
                           value={dues_2020}
                           onChange={(e) => setDues2020(e.target.value)}
                           //   placeholder="Enter member's name here"
-                          className='border text-center text-gray-500 bg-gray-100 shadow-md w-full p-3 rounded-xl'
+                          className='border capitalize text-center text-gray-500 bg-gray-100 shadow-md w-full p-3 rounded-xl'
                         />
                       </div>
                       <div className='flex flex-col items-center justify-center'>

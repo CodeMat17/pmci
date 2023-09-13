@@ -111,7 +111,7 @@ const UpdateWeddingLevies = ({ user_id, benefy, name, amnt }) => {
                         type='text'
                         value={beneficiary}
                         onChange={(e) => setBeneficiary(e.target.value)}
-                        className='border text-gray-500 bg-gray-100 shadow-md w-full p-3 rounded-xl'
+                        className='border capitalize text-gray-500 bg-gray-100 shadow-md w-full p-3 rounded-xl'
                       />
                     </div>
                     <div className=''>
@@ -120,7 +120,7 @@ const UpdateWeddingLevies = ({ user_id, benefy, name, amnt }) => {
                         type='text'
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
-                        className='border text-gray-500 bg-gray-100 shadow-md w-full p-3 rounded-xl'
+                        className='border capitalize text-gray-500 bg-gray-100 shadow-md w-full p-3 rounded-xl'
                       />
                     </div>
                     <div className=''>

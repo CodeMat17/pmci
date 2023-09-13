@@ -115,7 +115,7 @@ const UpdateOtherLevies = ({ user_id, descp, titlee, amnt, name }) => {
                         type='text'
                         value={paid_by}
                         onChange={(e) => setPaidBy(e.target.value)}
-                        className='border text-gray-500 bg-gray-100 shadow-md w-full px-3 py-2 rounded-xl'
+                        className='border capitalize text-gray-500 bg-gray-100 shadow-md w-full px-3 py-2 rounded-xl'
                       />
                     </div>
                     <div className=''>
@@ -124,7 +124,7 @@ const UpdateOtherLevies = ({ user_id, descp, titlee, amnt, name }) => {
                         type='text'
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
-                        className='border text-gray-500 bg-gray-100 shadow-md w-full px-3 py-2 rounded-xl'
+                        className='border capitalize text-gray-500 bg-gray-100 shadow-md w-full px-3 py-2 rounded-xl'
                       />
                     </div>
                     <div className=''>

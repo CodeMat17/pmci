@@ -20,7 +20,7 @@ export default function Home() {
         <div className='text-center -mt-8'>
           <p className='text-lg'>Welcome to the</p>
           <p className='text-3xl'>Pioneer Members Club International</p>
-          <p>Mottor: Unity, Peace and Love</p>
+          <p>Motto: Unity, Peace and Love</p>
           <DashboardButtn />
         </div>
       </div>

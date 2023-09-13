@@ -112,7 +112,7 @@ const UpdateProfile = ({ id, name, positn, bis, bis2 }) => {
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         placeholder="Enter member's name here"
-                        className='border text-gray-500 w-full px-3 py-2 rounded-xl'
+                        className='border capitalize text-gray-500 w-full px-3 py-2 rounded-xl'
                       />
                     </div>
                     <div>
@@ -121,7 +121,7 @@ const UpdateProfile = ({ id, name, positn, bis, bis2 }) => {
                         value={position}
                         onChange={(e) => setPosition(e.target.value)}
                         placeholder="Enter member's position here"
-                        className='border text-gray-500 w-full px-3 py-2 rounded-xl'
+                        className='border capitalize text-gray-500 w-full px-3 py-2 rounded-xl'
                       />
                     </div>
 
