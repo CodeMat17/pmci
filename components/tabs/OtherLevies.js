@@ -2,6 +2,7 @@
 import dayjs from "dayjs";
 import UpdateOtherLevies from "../crud/UpdateOtherLevies";
 import DeleteOtherLevy from "../crud/DeleteOtherLevy";
+import FormatedCurrency from "../FormatedCurrency";
 
 const OtherLevies = ({ others }) => {
   return (
@@ -26,7 +27,14 @@ const OtherLevies = ({ others }) => {
                   <p className=''>Title: {other.title}</p>
                   <p className=''>Desc: {other.desc}</p>
                   <div className='flex items-center justify-between'>
-                    <p className=''>Amount: ₦{other.amount}</p>
+                    <div className="flex items-center gap-x-1">
+                      <p className=''>Amount:</p>
+                      <FormatedCurrency
+                        item={other.amount}
+                        size='md'
+                        itemcolor='purple-00'
+                      />
+                    </div>
                     <p className=''>
                       {dayjs(other.created_at).format("MMM D, YYYY")}
                     </p>

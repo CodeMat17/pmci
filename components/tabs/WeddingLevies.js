@@ -3,6 +3,7 @@
 import dayjs from "dayjs";
 import UpdateWeddingLevies from "../crud/UpdateWeddingLevies";
 import DeleteWeddingLevy from "../crud/DeleteWeddingLevy";
+import FormatedCurrency from "../FormatedCurrency";
 
 const WeddingLevies = ({ weddings }) => {
   return (
@@ -22,9 +23,14 @@ const WeddingLevies = ({ weddings }) => {
                     {wed.username}
                   </h1>
                   <div className='flex items-center justify-between'>
-                    <p className='tracking-wide bg-purple-200 p-2 rounded-lg'>
-                      ₦{wed.amount}
-                    </p>
+                    <div className='bg-purple-200 p-2 rounded-lg tracking-wide'>
+                      <FormatedCurrency
+                        item={wed.amount}
+                        size='md'
+                        itemcolor='purple-00'
+                      />
+                    </div>
+
                     <p className='text-sm'>
                       {dayjs(wed.created_at).format("MMM D, YYYY")}
                     </p>
