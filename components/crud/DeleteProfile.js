@@ -46,8 +46,8 @@ const DeleteProfile = ({ id, name, positn, bis, bis2 }) => {
           duration: 5000,
           position: "top-center",
         });
-        setIsOpen(false);
-        router.refresh();
+          setIsOpen(false);
+        router.push('/admin');
       }
     } catch (error) {
       console.log("Error Msg: ", error);

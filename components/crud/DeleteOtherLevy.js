@@ -47,7 +47,7 @@ const DeleteOtherLevy = ({ user_id, descp, titlee, amnt, name }) => {
           position: "top-center",
         });
 
-        router.refresh();
+          router.push("/admin");
         setIsOpen(false);
       }
     } catch (error) {
