@@ -10,7 +10,7 @@ const MembersMonthlyDues = ({ profiles }) => {
       </h1>
 
       {/* <pre>{JSON.stringify(profiles, null, 2)}</pre> */}
-      <div className='w-full pt-6 space-y-6 max-w-md mx-auto'>
+      <div className='w-full pt-6 space-y-6 max-w-lg mx-auto'>
         {profiles &&
           profiles.map((profile) => (
             <Link href={`admin/${profile.id}`}

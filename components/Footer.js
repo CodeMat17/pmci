@@ -40,6 +40,17 @@ const Footer = () => {
               </Link>
             </div>
 
+            <div>
+              <Link href='/absenteeism' className="hover:text-gray-300">
+                Absenteeism
+              </Link>
+            </div>
+            <div>
+              <Link href='/lateness' className="hover:text-gray-300">
+                Lateness
+              </Link>
+            </div>
+
             <VerificationModal classnames='hover:text-gray-300' />
           </div>
         </div>
@@ -61,7 +72,7 @@ const Footer = () => {
         </p>
         <p className='text-center text-white mt-4 border-t border-dashed border-gray-600 pt-4'>
           {" "}
-        Copyright &copy; 2023 PMCI. All Rights Reserved.
+          Copyright &copy; 2023 PMCI. All Rights Reserved.
         </p>
       </div>
     </div>

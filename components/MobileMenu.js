@@ -11,11 +11,13 @@ const links = [
   { href: "/wedding-levies", label: "WEDDING LEVIES" },
   { href: "/other-levies", label: "OTHER LEVIES" },
   { href: "/executives", label: "EXECUTIVES" },
+  { href: "/absenteeism", label: "ABSENTEEISM" },
+  { href: "/lateness", label: "LATENESS" },
 ];
 
 const MobileMenu = () => {
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <Menu as='div' className='relative'>
         {({ open }) => (
           <>

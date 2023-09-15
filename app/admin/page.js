@@ -2,6 +2,8 @@
 
 import PageTitle from "@/components/PageTitle";
 import SignOut from "@/components/buttons/SignOut";
+import AddAbsentLog from "@/components/crud/AddAbsentLog";
+import AddLatenessLog from "@/components/crud/AddLatenessLog";
 import AddMember from "@/components/crud/AddMember";
 import AddOtherLevy from "@/components/crud/AddOtherLevy";
 import AddWeddingLevy from "@/components/crud/AddWeddingLevy";
@@ -46,10 +48,20 @@ const AdminPage = async () => {
     .select("*")
     .order("title", { ascending: true });
 
+   const { data: absent } = await supabase
+     .from("absenteeism")
+     .select("*")
+     .order("created_at", { ascending: false });
+  
+   const { data: lateness } = await supabase
+     .from("lateness")
+     .select("*")
+     .order("created_at", { ascending: false });
+  
   return (
     <div className='min-h-[90vh] px-4 py-16'>
       <div className='relative max-w-2xl mx-auto'>
-        {/* <pre>{JSON.stringify(others, null, 2)}</pre> */}
+        {/* <pre>{JSON.stringify(absent, null, 2)}</pre> */}
 
         <PageTitle title='Admin Dashboard' />
 
@@ -57,6 +69,8 @@ const AdminPage = async () => {
           <AddMember />
           <AddWeddingLevy />
           <AddOtherLevy />
+          <AddAbsentLog />
+          <AddLatenessLog />
         </div>
 
         <p className='mt-2 text-2xl font-normal text-center text-purple-900'>
@@ -64,7 +78,7 @@ const AdminPage = async () => {
         </p>
 
         <div className='py-8 '>
-          <Tabs profiles={profiles} weddings={weddings} others={others} />
+          <Tabs profiles={profiles} weddings={weddings} others={others} absent={absent} lateness={lateness} />
         </div>
 
         <div className='absolute -top-12 right-0'>
