@@ -34,7 +34,7 @@ const Lateness = async () => {
                   </h1>
                   <div className='p-3 mt-3 bg-purple-100 rounded-xl'>
                     <h2 className='text-lg truncate capitalize'>
-                      {late.username} Matthew Anthony Chukwu Eze
+                      {late.username}
                     </h2>
                     <div className='flex items-center justify-between'>
                       <div>
