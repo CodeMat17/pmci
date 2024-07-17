@@ -18,11 +18,15 @@ const MembersList = async () => {
       {/* <pre>{JSON.stringify(profiles, null, 2)}</pre> */}
 
       <div className='pt-12 space-y-6'>
-        {profiles.map((profile) => (
-          <Suspense fallback={<LoadingUI />} key={profile.id}>
-            <MembersCard {...profile} />
-          </Suspense>
-        ))}
+        {profiles && profiles.length < 1 ? (
+          <p className="text-center pb-32">No data found or database has gone to sleep. Contact the developer to wake it up.</p>
+        ) : (
+          profiles.map((profile) => (
+            <Suspense fallback={<LoadingUI />} key={profile.id}>
+              <MembersCard {...profile} />
+            </Suspense>
+          ))
+        )}
       </div>
     </div>
   );
