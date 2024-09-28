@@ -1,29 +1,23 @@
-import { NextResponse } from "next/server";
 import supabase from "@/utils/supabase";
+import { NextResponse } from "next/server";
 
 export async function GET(req) {
-//   const supabase = await createClient();
+  //   const supabase = await createClient();
 
   console.log("Starting GET request");
   try {
     // Ping the Supabase endpoint to keep it active
-    const { data, error } = await supabase
-      .from("profiles")
-      .select("id")
-      .limit(1);
+    await Promise.all([
+      supabase.from("profiles").select("id"),
+      supabase.from("absenteeism").select("id"),
+      supabase.from("lateness").select("id"),
+      supabase.from("monthlydues").select("id"),
+      supabase.from("others").select("id"),
+      supabase.from("weddinglevies").select("id"),
+    ]);
 
-    if (error) {
-      console.error("Error fetching data:", error.message);
-      return NextResponse.json({ error: error.message }, { status: 500 });
-    }
-
-      console.log("Data fetched successfully:", data);
-    return NextResponse.json({ users: data }, { status: 200 });
+       return NextResponse.json({ message: "Keeping backend awake..." });
   } catch (error) {
-      console.error("Caught error:", error.message);
-    return NextResponse.json(
-      { error: (error).message },
-      { status: 500 }
-    );
+   return NextResponse.json({ error: error }, { status: 500 });
   }
 }
